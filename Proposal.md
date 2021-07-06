@@ -17,11 +17,11 @@ THEN I am presented with a responsive layout that adapts to my viewport <br />
 ## Sketch of the design
 
 When a user loads the webpage they will be greeted by a navbar and a search bar. <br />
-![Landing Page](asset/images/protoype_images/prototype_images_landing.png)
+![Landing Page](asset/images/prototype_images/prototype_images_landing.png)
 <br />
 <br />
 When a movie is searched, a summary appears along with a movie trailer from YouTube. <br />
-![Summary and Video display](asset/images/protoype_images/protoype_images_search.png)
+![Summary and Video display](asset/images/prototype_images/prototype_images_search.png)
 
 ## APIs to be used
 

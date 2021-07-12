@@ -14,7 +14,7 @@ var rendermovieinfo = function(event){
     var titleclass = $('#movie-title').parent();
     titleclass.addClass('flex m-10 h-16 w-1/2 justify-center border-solid border-4 border-light-500' )
     title.text(titlereturnvalue);
-    $('#movie-content').children('div').addClass('m-10 h-96 w-full lg:w-2/5 border-solid border-4 border-light-500' )
+    $('#movie-content').children('div').addClass('flex-wrap m-10 h-96 w-full lg:w-2/5 border-solid border-4 border-light-500' )
     $('#summary').text(sumreturnvalue);
     $('#summary').parent().children('h1').text('summary')
     var video = $("<img></img>");
@@ -22,26 +22,22 @@ var rendermovieinfo = function(event){
     video.attr('src','https://place-hold.it/150');
     video.attr('alt','placeholder');
     $('#video').append(video)
-
-  console.log(title);
-  console.log(titleclass);
-
 }
 
 
 
 searchBtn.on('click',rendermovieinfo);
-let $titleSearchEle = $("#titleSearch");
-let $yearSearchEle = $("#yearSearch");
+let $titleSearchEle = $("#movie-input");
+let $yearSearchEle = $("#date-input");
 let $containerEle = $("#container");
 
 // Onclick
-$("#search").on("click", function (event) {
+$("#search-button").on("click", function (event) {
   let $movieTitle = $titleSearchEle.val();
   let $yearMade = $yearSearchEle.val();
 
   let $fetchURL =
-    "http://www.omdbapi.com/?apikey=986f7dc1&t=" +
+    "http://www.omdbapi.com/?apikey=986f7dc1&s=" +
     $movieTitle +
     "&y=" +
     $yearMade;
@@ -50,13 +46,36 @@ $("#search").on("click", function (event) {
     .then(function (response) {
       return response.json();
     })
-    .then(function (response) {
-      renderResponse();
+    .then(function (movieres) {
+      renderResponse(movieres);
     });
 });
 
+$("#search-button").on("click", function (event) {
+  event.preventDefault();
+  let $movieTitle = $titleSearchEle.val();
+  let $yearMade = $yearSearchEle.val();
+  var API_key = "AIzaSyBhwwEyOaQ-KL-ZGAYniavjGFvgpXsdrpg"
+
+  let $fetchURL =
+    "https://www.googleapis.com/youtube/v3/search?part=snippet&key=" +
+    API_key + "&type=video&part=snippet&maxResults=10" + "&q=" + $movieTitle + " " + $yearMade;
+
+  fetch($fetchURL)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (youres) {
+      renderResponse2(youres);
+    });
+});
+
+let renderResponse2 = function (response) {
+  console.log(response);
+};
+
 let renderResponse = function (response) {
-  console.log("text");
+  console.log(response);
 };
 
 renderResponse();

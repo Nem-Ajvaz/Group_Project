@@ -6,8 +6,8 @@ var sumreturnvalue = "summary" // change this with the response text
 
 //border-solid border-4 border-light-500
 //https://place-hold.it/150
-
-var rendermovieinfo = function(event){
+//<iframe width="560" height="315" src="https://www.youtube.com/embed/EAyo3_zJj5c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+var rendermovieinfo = function(event, response){
     event.preventDefault();
 
     var title = $('#movie-title');
@@ -17,16 +17,15 @@ var rendermovieinfo = function(event){
     $('#movie-content').children('div').addClass('flex-wrap m-10 h-96 w-full lg:w-2/5 border-solid border-4 border-light-500' )
     $('#summary').text(sumreturnvalue);
     $('#summary').parent().children('h1').text('summary')
-    var video = $("<img></img>");
-    video.addClass('h-full w-full');
-    video.attr('src','https://place-hold.it/150');
-    video.attr('alt','placeholder');
+    console.log(response.items[0].id.videoId);
+    var video1 = '<iframe width="100%" height="100%" src="https://www.youtube.com/embed/'
+    var video2 =  '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+    var video = video1 + response.items[0].id.videoId + video2
     $('#video').append(video)
 }
 
 
 
-searchBtn.on('click',rendermovieinfo);
 let $titleSearchEle = $("#movie-input");
 let $yearSearchEle = $("#date-input");
 let $containerEle = $("#container");
@@ -47,7 +46,7 @@ $("#search-button").on("click", function (event) {
       return response.json();
     })
     .then(function (movieres) {
-      renderResponse(movieres);
+      renderResponse(event, movieres);
     });
 });
 
@@ -65,14 +64,12 @@ $("#search-button").on("click", function (event) {
     .then(function (response) {
       return response.json();
     })
-    .then(function (youres) {
-      renderResponse2(youres);
+    .then(function (response) {
+      rendermovieinfo(event, response);
     });
 });
 
-let renderResponse2 = function (response) {
-  console.log(response);
-};
+
 
 let renderResponse = function (response) {
   console.log(response);

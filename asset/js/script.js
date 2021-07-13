@@ -62,18 +62,18 @@ function searchMovie() {
   .then(function (response) {
     if (response.ok) {
       return response.json();
-<<<<<<< HEAD
+
     } else {
       return Promise.reject(
         "Failed to retrieve movie information data for: '" + $movieTitle + "'"
       );
     }
   })
-=======
+
     })
-<<<<<<< HEAD
+
     .then(renderResponse);
-}
+
 let renderResponse = function (response) {
   // Created Elements for the Movie Title section
   let $movieTitleEl = $("<h2>");
@@ -92,14 +92,14 @@ let renderResponse = function (response) {
   $containerEle.append($movieSummaryEl);
 
   //Adding classes to the created elements
-  $movieTitleEl.addClass("movieTitleHeading");
-=======
->>>>>>> 48b5eee76c47d2c14cc4a038a5aad91b799cecbc
+  $movieTitleEl.addClass("moing")
+
+
     .then(function (movieres) {
       console.log(movieres)
       GetYoutube(event, movieres);
     });
-});
+
 
 let GetYoutube = function (event, movieres) {
   event.preventDefault();
@@ -120,19 +120,14 @@ let GetYoutube = function (event, movieres) {
     .then(function (response) {
       rendermovieinfo(event, response);
     });
-<<<<<<< HEAD
+
 };
-
-
-=======
-});
-
 
 
 let renderResponse = function (response) {
   console.log(response);
->>>>>>> fa8d569e9e99a9f36c4e1b0504edec820c2a043c
+
 };
 
 //srenderResponse();
->>>>>>> 48b5eee76c47d2c14cc4a038a5aad91b799cecbc
+

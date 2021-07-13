@@ -1,1 +1,30 @@
+<<<<<<< HEAD
+* {
+  padding: 0;
+  margin: 0;
+}
 
+div {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+#search {
+  height: 40px;
+  width: 60px;
+}
+
+#titleSearch,
+#yearSearch {
+  margin-right: 10px;
+  height: 40px;
+  width: 240px;
+  font-size: 25px;
+}
+
+.movieTitleHeading {
+  color: aqua;
+}
+=======
+
+>>>>>>> fa8d569e9e99a9f36c4e1b0504edec820c2a043c

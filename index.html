@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>movie searcher</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./asset/css/style.css" />
+  </head>
+
+  <body class="">
+    <header class="w-full h-20 bg-gray-100">
+      <h1 class="text-5xl text-center">movie search proto</h1>
+    </header>
+    <div class="flex justify-center w-full h-48 border-solid border-4 border-light-500">
+        <div class="flex min-h-full w-3/4">
+            <h3></h3>
+            <form id="search-form" class="flex self-center w-full ">
+                <input id="movie-input" class=" w-full h-10 border-solid border-4 border-light-500" type="text" placeholder=" movie title">
+                <input id="date-input" class=" w-full h-10 border-solid border-4 border-light-500" type="text" placeholder=" movie date">
+                <button id ="search-button" class=" w-1/2 bg-gray-100">Search</button>
+            </form>
+        </div>
+    </div>
+    <div id="result" class="flex justify-center w-full">
+        <div class="flex m-10 h-16 w-1/2 justify-center">
+            <h1 id ="movie-title" class="text-xl self-center"></h1>
+        </div>
+    </div>
+    <div id = "movie-content" class="flex flex-wrap md:flex min-w-full justify-center w-full">
+        <div class="m-10 h-96 w-full lg:w-2/5">
+            <h1 class="text-xl text-center my-2.5"></h1>
+            <p id ='summary'class="mx-2"></p>
+        </div>
+        <div id ="video" class="m-10 h-96 w-full lg:w-2/5">
+            <!--where the video goes -->
+        </div>
+    </div>
+
+    <footer class="flex w-full h-12 bg-gray-100 justify-center ">
+        <h1 class="text-xl">///////////////////footer/////////////////////</h1>
+
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./asset/js/script.js"></script>
+  </body>
+</html>

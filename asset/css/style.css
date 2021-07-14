@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 * {
   padding: 0;
   margin: 0;
 }
 
 div {
-  margin-top: 30px;
   display: flex;
   justify-content: center;
 }
@@ -25,6 +23,7 @@ div {
 .movieTitleHeading {
   color: aqua;
 }
-=======
 
->>>>>>> fa8d569e9e99a9f36c4e1b0504edec820c2a043c
+.hidden {
+  display: none;
+}

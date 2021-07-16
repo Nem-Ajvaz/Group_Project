@@ -3,15 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>movie searcher</title>
+    <title>Reel Movies</title>
     <link
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <link rel="shortcut icon" href="/asset/images/reel.ico" />
     <link rel="stylesheet" href="./asset/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
   </head>
 
-  <body class="">
+  <body class="flex flex-col h-screen justify-between">
+   
     <!-- Modal Start -->
 
     <!-- This example requires Tailwind CSS v2.0+ -->
@@ -38,7 +43,6 @@
       >
         <!--
       Background overlay, show/hide based on modal state.
-
       Entering: "ease-out duration-300"
         From: "opacity-0"
         To: "opacity-100"
@@ -60,7 +64,6 @@
 
         <!--
       Modal panel, show/hide based on modal state.
-
       Entering: "ease-out duration-300"
         From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         To: "opacity-100 translate-y-0 sm:scale-100"
@@ -74,7 +77,6 @@
             align-bottom
             bg-white
             rounded-lg
-            text-left
             overflow-hidden
             shadow-xl
             transform
@@ -159,6 +161,7 @@
                 sm:ml-3
                 sm:w-auto
                 sm:text-sm
+                mb-4
               "
             >
               Try Again
@@ -169,69 +172,113 @@
     </div>
 
     <!-- Modal End -->
-    <header class="w-full h-20 bg-gray-100">
-      <h1 class="text-5xl text-center">movie search proto</h1>
+    <header class="w-full h-40  flex justify-center items-center">
+      <img src="asset/images/reel.png" class="rounded-full h-24" />
+      <h1 class="text-5xl text-center font-family: 'Special Elite', cursive; mx-8">Reel Movies</h1>
     </header>
-    <div
-      class="
-        flex
-        justify-center
-        w-full
-        h-48
-        border-solid border-4 border-light-500
-        <!--
-        Test
-        to
-        see
-        if
-        this
-        is
-        working
-        in
-        GIT.
-        -->
-      "
-    >
+    <div class="flex justify-center w-full h-48 ">
       <div class="flex min-h-full w-3/4">
         <h3></h3>
         <form id="search-form" class="flex self-center w-full">
           <input
             id="movie-input"
-            class="w-full h-10 border-solid border-4 border-light-500"
+            class="w-full h-10 border-solid border-2 border-gray-600 border-r-0 rounded-l-md "
             type="text"
-            placeholder="Movie Title"
+            placeholder=" Movie Title"
           />
           <input
             id="date-input"
-            class="w-full h-10 border-solid border-4 border-light-500"
+            class="w-full h-10 border-solid border-2 border-gray-600 "
             type="text"
-            placeholder="Year Released"
+            placeholder=" Year Released"
           />
-          <button id="search-button" class="w-1/2 bg-gray-100">Search</button>
+          <button id="search-button" class="w-1/2 bg-blue-100 border border-gray-600 border-l-0 rounded-r-md">Search</button>
         </form>
       </div>
     </div>
-    <div id="result" class="flex justify-center w-full">
-      <div class="flex m-10 h-16 w-1/2 justify-center">
-        <h1 id="movie-title" class="text-xl self-center"></h1>
-      </div>
-    </div>
-
-    <div
+        <div
       id="movie-content"
       class="flex flex-wrap md:flex min-w-full justify-center w-full"
     >
-      <div class="m-10 h-96 w-full lg:w-2/5">
-        <h1 class="text-xl text-center my-2.5"></h1>
-        <p id="summary" class="mx-2"></p>
+      <div class="flex flex-wrap m-10 h-96 w-full lg:w-5/12">
+        <div
+          class="
+          container1
+            flex
+            justify-center
+            w-full
+            h-1/5
+            
+          "
+        >
+          <div
+            class="
+              self-center
+              text-center
+              w-4/5
+              h-4/5
+             
+            "
+          >
+            <h2 id="movieTitle" class="inline-block text-lg leading-tight">
+              <!-- The title of the movie will go here -->
+              <!-- title -->
+            </h2>
+          </div>
+        </div>
+        <div
+          class="
+            container2
+            flex
+            justify-center
+            w-3/5
+            h-4/5
+            
+          "
+        >
+          <div
+            class="
+              self-center
+              w-11/12
+              h-5/6
+              
+            "
+          >
+            <p id="movieSummary">
+              <!-- The movie plot will go here -->
+            </p>
+          </div>
+        </div>
+        <div class="container3 w-2/5 h-4/5 ">
+          <div
+            id="actors"
+            class="w-full h-2/6 "
+          >
+            <!-- Actors Names will be populated here -->
+          </div>
+          <div
+            id="awards"
+            class="w-full h-2/6"
+          >
+            <!-- Awards will be populated here -->
+          </div>
+          <div
+            id="ratings"
+            class="w-full h-2/6"
+          >
+            <!-- Ratings will be populated here -->
+          </div>
+        </div>
       </div>
-      <div id="video" class="m-10 h-96 w-full lg:w-2/5">
-        <!--where the video goes -->
+      <div id="video" class="m-10 h-96 w-full lg:w-5/12">
+        <!-- The embedded video will go here -->
       </div>
     </div>
 
     <footer class="flex w-full h-12 bg-gray-100 justify-center">
-      <h1 class="text-xl">///////////////////footer/////////////////////</h1>
+      <h1 class="self-center text-xl">
+        ///////////////////footer/////////////////////
+      </h1>
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./asset/js/script.js"></script>

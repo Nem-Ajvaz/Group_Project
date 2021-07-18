@@ -77,7 +77,7 @@ function renderOMDbDetails(event) {
 
   // URL we will be sending to the server
   let fetchURL =
-    "http://www.omdbapi.com/?apikey=986f7dc1&t=" +
+    "https://www.omdbapi.com/?apikey=986f7dc1&t=" +
     movieTitle +
     "&y=" +
     yearMade;

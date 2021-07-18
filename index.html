@@ -8,7 +8,7 @@
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" href="/asset/images/reel.ico" />
+    <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
     <link rel="stylesheet" href="/asset/css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,8 +18,6 @@
   <body class="flex flex-col h-screen justify-between">
    
     <!-- Modal Start -->
-
-    <!-- This example requires Tailwind CSS v2.0+ -->
     <div
       id="myModalDisplay"
       class="fixed z-10 inset-0 overflow-y-auto hidden"
@@ -41,15 +39,6 @@
           sm:p-0
         "
       >
-        <!--
-      Background overlay, show/hide based on modal state.
-      Entering: "ease-out duration-300"
-        From: "opacity-0"
-        To: "opacity-100"
-      Leaving: "ease-in duration-200"
-        From: "opacity-100"
-        To: "opacity-0"
-    -->
         <div
           class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
           aria-hidden="true"
@@ -62,15 +51,6 @@
           >&#8203;</span
         >
 
-        <!--
-      Modal panel, show/hide based on modal state.
-      Entering: "ease-out duration-300"
-        From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-        To: "opacity-100 translate-y-0 sm:scale-100"
-      Leaving: "ease-in duration-200"
-        From: "opacity-100 translate-y-0 sm:scale-100"
-        To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-    -->
         <div
           class="
             inline-block
@@ -172,31 +152,56 @@
     </div>
 
     <!-- Modal End -->
-    <header class="w-full h-40  flex justify-center items-center">
+    <!-- Header Start -->
+    <header class="w-full h-40 m-8 flex justify-center items-center">
       <img src="asset/images/reel.png" class="rounded-full h-24" />
-      <h1 class="text-5xl text-center font-family: 'Special Elite', cursive; mx-8">Reel Movies</h1>
+      <h1 class="text-5xl text-center font-mono mx-8">Reel Movies</h1>
     </header>
+    <!-- Header End -->
+    <!-- Search Container Start -->
     <div class="flex justify-center w-full h-48 ">
       <div class="flex min-h-full w-3/4">
         <h3></h3>
         <form id="search-form" class="flex self-center w-full">
           <input
             id="movie-input"
-            class="w-full h-10 border-solid border-2 border-gray-600 border-r-0 rounded-l-md "
+            class="w-full h-10 border-solid border-2 border-gray-600 border-r-0 rounded-l-md pl-4"
             type="text"
-            placeholder=" Movie Title"
+            placeholder="Movie Title"
           />
           <input
             id="date-input"
-            class="w-full h-10 border-solid border-2 border-gray-600 "
+            class="w-full h-10 border-solid border-2 border-gray-600 pl-4"
             type="text"
-            placeholder=" Year Released"
+            placeholder="Year Released"
           />
           <button id="search-button" class="w-1/2 bg-blue-100 border border-gray-600 border-l-0 rounded-r-md">Search</button>
         </form>
       </div>
     </div>
-        <div
+    <!-- Search Container End -->
+    <!-- Procesing Start -->
+    
+        <div id="processing" class="flex justify-center items-center mt-10 hidden ">
+          <div class="loader bg-white p-5 rounded-full flex space-x-3">
+            <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+            <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+            <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+          </div> 
+          <p>Processing</p>
+        </div>
+    <!-- Processing End -->
+    <!-- Error Start -->
+    <div id="error" class="flex justify-center items-center">
+    </div>
+    <!-- Error End -->
+    <!-- Render Previous Search History to the page Start -->
+    <div id="searchHistory">
+
+    </div>
+    <!-- Render Previous Search History to the page End -->
+    <!-- Movie Container Start -->
+    <div
       id="movie-content"
       class="flex flex-wrap md:flex min-w-full justify-center w-full"
     >
@@ -211,7 +216,7 @@
             
           "
         >
-          <div
+          <div id="titleContainer"
             class="
               self-center
               text-center
@@ -222,7 +227,7 @@
           >
             <h2 id="movieTitle" class="inline-block text-lg leading-tight">
               <!-- The title of the movie will go here -->
-              <!-- title -->
+              
             </h2>
           </div>
         </div>
@@ -238,6 +243,7 @@
         >
           <div
             class="
+            text-center
               self-center
               w-11/12
               h-5/6
@@ -252,19 +258,19 @@
         <div class="container3 w-2/5 h-4/5 ">
           <div
             id="actors"
-            class="w-full h-2/6 "
+            class="w-full h-2/6 text-center mt-1"
           >
             <!-- Actors Names will be populated here -->
           </div>
           <div
             id="awards"
-            class="w-full h-2/6"
+            class="w-full h-2/6 text-center mt-1"
           >
             <!-- Awards will be populated here -->
           </div>
           <div
             id="ratings"
-            class="w-full h-2/6"
+            class="w-full h-2/6 text-center mt-1"
           >
             <!-- Ratings will be populated here -->
           </div>
@@ -273,14 +279,42 @@
       <div id="video" class="m-10 h-96 w-full lg:w-5/12">
         <!-- The embedded video will go here -->
       </div>
-    </div>
-
-    <footer class="flex w-full h-12 bg-gray-100 justify-center">
-      <h1 class="self-center text-xl">
-        ///////////////////footer/////////////////////
+    </div> 
+    <!-- Movie Container End -->
+    <!-- Footer Start -->
+    <footer class="flex flex-row w-full h-16 bg-gray-100 justify-around">
+      <div class="flex">
+      <h1 class="self-center text-sm ">
+        Developed by: <a href="https://github.com/ivany9">Jorge</a>, <a href="https://github.com/jdwalsh138">Jack</a>, <a href="https://github.com/seaweedq12">Yeon</a> and <a href="https://github.com/Nem-Ajvaz">Nem</a>. 
       </h1>
+      <div>
+      <div class="flex flex-row">
+            <ul class="flex self-center">
+              <li >
+                <a href="https://github.com/Nem-Ajvaz/Group_Project"
+                  ><img class="h-8 rounded-full hover:translate-y-0.5 transform ml-3 my-4"
+                    src="asset/images/github.png"
+                    alt="Github Icon"
+                    class="footer-img"
+                /></a>
+              </li>
+              <li>
+                <a href="mailto: group-3_us_webbootcamp@gmail.com"
+                  ><img class="h-8 rounded-full hover:translate-y-0.5 transform ml-3 my-4"
+                    src="asset/images/gmail.png"
+                    alt="Gmail Icon"
+                    class="footer-img"
+                /></a>
+              </li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+      </div>
     </footer>
+    <!-- Footer End -->
+    <!-- Scripts Used -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/asset/js/script.js"></script>
+    <script src="./asset/js/script.js"></script>
   </body>
 </html>

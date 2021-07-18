@@ -3,47 +3,317 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>movie searcher</title>
+    <title>Reel Movies</title>
     <link
       href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./asset/css/style.css" />
+    <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
+    <link rel="stylesheet" href="/asset/css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
   </head>
 
-  <body class="">
-    <header class="w-full h-20 bg-gray-100">
-      <h1 class="text-5xl text-center">movie search proto</h1>
+  <body class="flex flex-col h-screen justify-between">
+   
+    <!-- Modal Start -->
+    <div
+      id="myModalDisplay"
+      class="fixed z-10 inset-0 overflow-y-auto hidden"
+      aria-labelledby="modal-title"
+      role="dialog"
+      aria-modal="true"
+    >
+      <div
+        class="
+          flex
+          items-end
+          justify-center
+          min-h-screen
+          pt-4
+          px-4
+          pb-20
+          text-center
+          sm:block
+          sm:p-0
+        "
+      >
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+          aria-hidden="true"
+        ></div>
+
+        <!-- This element is to trick the browser into centering the modal contents. -->
+        <span
+          class="hidden sm:inline-block sm:align-middle sm:h-screen"
+          aria-hidden="true"
+          >&#8203;</span
+        >
+
+        <div
+          class="
+            inline-block
+            align-bottom
+            bg-white
+            rounded-lg
+            overflow-hidden
+            shadow-xl
+            transform
+            transition-all
+            sm:my-8
+            sm:align-middle
+            sm:max-w-lg
+            sm:w-full
+          "
+        >
+          <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="sm:flex sm:items-start">
+              <div
+                class="
+                  mx-auto
+                  flex-shrink-0 flex
+                  items-center
+                  justify-center
+                  h-12
+                  w-12
+                  rounded-full
+                  bg-red-100
+                  sm:mx-0
+                  sm:h-10
+                  sm:w-10
+                "
+              >
+                <!-- Heroicon name: outline/exclamation -->
+                <svg
+                  class="h-6 w-6 text-red-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+                  />
+                </svg>
+              </div>
+              <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                <h3
+                  class="text-lg leading-6 font-medium text-gray-900"
+                  id="modal-title"
+                >
+                  Incorrect Title
+                </h3>
+                <div class="mt-2">
+                  <p class="text-sm text-gray-500">
+                    Please ensure that the movie title has been entered correctly and try again
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+            <button
+            id="canelBtn"
+              type="button"
+              class="
+                mt-3
+                w-full
+                inline-flex
+                justify-center
+                rounded-md
+                border border-gray-300
+                shadow-sm
+                px-4
+                py-2
+                bg-white
+                text-base
+                font-medium
+                text-gray-700
+                hover:bg-gray-50
+                focus:outline-none
+                focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+                sm:mt-0
+                sm:ml-3
+                sm:w-auto
+                sm:text-sm
+                mb-4
+              "
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal End -->
+    <!-- Header Start -->
+    <header class="w-full h-40 m-8 flex justify-center items-center">
+      <img src="asset/images/reel.png" class="rounded-full h-24" />
+      <h1 class="text-5xl text-center font-mono mx-8">Reel Movies</h1>
     </header>
-    <div class="flex justify-center w-full h-48 border-solid border-4 border-light-500">
-        <div class="flex min-h-full w-3/4">
-            <h3></h3>
-            <form id="search-form" class="flex self-center w-full ">
-                <input id="movie-input" class=" w-full h-10 border-solid border-4 border-light-500" type="text" placeholder=" movie title">
-                <input id="date-input" class=" w-full h-10 border-solid border-4 border-light-500" type="text" placeholder=" movie date">
-                <button id ="search-button" class=" w-1/2 bg-gray-100">Search</button>
-            </form>
-        </div>
+    <!-- Header End -->
+    <!-- Search Container Start -->
+    <div class="flex justify-center w-full h-48 ">
+      <div class="flex min-h-full w-3/4">
+        <h3></h3>
+        <form id="search-form" class="flex self-center w-full">
+          <input
+            id="movie-input"
+            class="w-full h-10 border-solid border-2 border-gray-600 border-r-0 rounded-l-md pl-4"
+            type="text"
+            placeholder="Movie Title"
+          />
+          <input
+            id="date-input"
+            class="w-full h-10 border-solid border-2 border-gray-600 pl-4"
+            type="text"
+            placeholder="Year Released"
+          />
+          <button id="search-button" class="w-1/2 bg-blue-100 border border-gray-600 border-l-0 rounded-r-md">Search</button>
+        </form>
+      </div>
     </div>
-    <div id="result" class="flex justify-center w-full">
-        <div class="flex m-10 h-16 w-1/2 justify-center">
-            <h1 id ="movie-title" class="text-xl self-center"></h1>
+    <!-- Search Container End -->
+    <!-- Procesing Start -->
+    
+        <div id="processing" class="flex justify-center items-center mt-10 hidden ">
+          <div class="loader bg-white p-5 rounded-full flex space-x-3">
+            <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+            <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+            <div class="w-5 h-5 bg-gray-800 rounded-full animate-bounce"></div>
+          </div> 
+          <p>Processing</p>
         </div>
+    <!-- Processing End -->
+    <!-- Error Start -->
+    <div id="error" class="flex justify-center items-center">
     </div>
-    <div id = "movie-content" class="flex flex-wrap md:flex min-w-full justify-center w-full">
-        <div class="m-10 h-96 w-full lg:w-2/5">
-            <h1 class="text-xl text-center my-2.5"></h1>
-            <p id ='summary'class="mx-2"></p>
-        </div>
-        <div id ="video" class="m-10 h-96 w-full lg:w-2/5">
-            <!--where the video goes -->
-        </div>
-    </div>
+    <!-- Error End -->
+    <!-- Render Previous Search History to the page Start -->
+    <div id="searchHistory">
 
-    <footer class="flex w-full h-12 bg-gray-100 justify-center ">
-        <h1 class="text-xl">///////////////////footer/////////////////////</h1>
-
+    </div>
+    <!-- Render Previous Search History to the page End -->
+    <!-- Movie Container Start -->
+    <div
+      id="movie-content"
+      class="flex flex-wrap md:flex min-w-full justify-center w-full"
+    >
+      <div class="flex flex-wrap m-10 h-96 w-full lg:w-5/12">
+        <div
+          class="
+          container1
+            flex
+            justify-center
+            w-full
+            h-1/5
+            
+          "
+        >
+          <div id="titleContainer"
+            class="
+              self-center
+              text-center
+              w-4/5
+              h-4/5
+             
+            "
+          >
+            <h2 id="movieTitle" class="inline-block text-lg leading-tight">
+              <!-- The title of the movie will go here -->
+              
+            </h2>
+          </div>
+        </div>
+        <div
+          class="
+            container2
+            flex
+            justify-center
+            w-3/5
+            h-4/5
+            
+          "
+        >
+          <div
+            class="
+            text-center
+              self-center
+              w-11/12
+              h-5/6
+              
+            "
+          >
+            <p id="movieSummary">
+              <!-- The movie plot will go here -->
+            </p>
+          </div>
+        </div>
+        <div class="container3 w-2/5 h-4/5 ">
+          <div
+            id="actors"
+            class="w-full h-2/6 text-center mt-1"
+          >
+            <!-- Actors Names will be populated here -->
+          </div>
+          <div
+            id="awards"
+            class="w-full h-2/6 text-center mt-1"
+          >
+            <!-- Awards will be populated here -->
+          </div>
+          <div
+            id="ratings"
+            class="w-full h-2/6 text-center mt-1"
+          >
+            <!-- Ratings will be populated here -->
+          </div>
+        </div>
+      </div>
+      <div id="video" class="m-10 h-96 w-full lg:w-5/12">
+        <!-- The embedded video will go here -->
+      </div>
+    </div> 
+    <!-- Movie Container End -->
+    <!-- Footer Start -->
+    <footer class="flex flex-row w-full h-16 bg-gray-100 justify-around">
+      <div class="flex">
+      <h1 class="self-center text-sm ">
+        Developed by: <a href="https://github.com/ivany9">Jorge</a>, <a href="https://github.com/jdwalsh138">Jack</a>, <a href="https://github.com/seaweedq12">Yeon</a> and <a href="https://github.com/Nem-Ajvaz">Nem</a>. 
+      </h1>
+      <div>
+      <div class="flex flex-row">
+            <ul class="flex self-center">
+              <li >
+                <a href="https://github.com/Nem-Ajvaz/Group_Project"
+                  ><img class="h-8 rounded-full hover:translate-y-0.5 transform ml-3 my-4"
+                    src="asset/images/github.png"
+                    alt="Github Icon"
+                    class="footer-img"
+                /></a>
+              </li>
+              <li>
+                <a href="mailto: group-3_us_webbootcamp@gmail.com"
+                  ><img class="h-8 rounded-full hover:translate-y-0.5 transform ml-3 my-4"
+                    src="asset/images/gmail.png"
+                    alt="Gmail Icon"
+                    class="footer-img"
+                /></a>
+              </li>
+            </ul>
+          </div>
+        </footer>
+      </div>
+      </div>
     </footer>
+    <!-- Footer End -->
+    <!-- Scripts Used -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="./asset/js/script.js"></script>
   </body>

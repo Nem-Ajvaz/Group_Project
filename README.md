@@ -6,6 +6,8 @@
 
 This project will enable the user to search for a movie title in the search bar and and render the movie details (Title, Plot, Actors, Awards and Ratings) along with the YouTube trailer to the screen. We used two API's to acheive this: OMDb API and the Google API (Youtube), information regarding implementation will be discussed later on in the README.md.
 
+You can access the deployed page here: https://nem-ajvaz.github.io/Group_Project/
+
 ## User Story
 
 GIVEN I am using a website to see movie summaries and trailers <br />

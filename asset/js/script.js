@@ -161,6 +161,7 @@ function renderOMDbDetails(event) {
       }
     })
     .catch(function () {
+      $errorEle.empty();
       // If there is an error render the below message to the screen
       $("#movie-content").children().hide();
       $processingEle.addClass("hidden");

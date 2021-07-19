@@ -73,7 +73,7 @@ Searching for a movie without a year returns the closest match to the title in t
 ![Title Batman No Year Input](asset/images/screenshots/searchBatmanYearEmpty.png)
 (Figuire 8. Searching for Batman without a year returns "Batman 1989")
 
-Searching for a movie with a year returns the a match in title and year from the OMDb.
+Searching for a movie with a year returns a match in title and year from the OMDb.
 ![Title Batmam Year Input](asset/images/screenshots/searchBatmanYearFull.png)
 (Figuire 9. Searching for Batman without a year returns "Batman 1989")
 <br />
